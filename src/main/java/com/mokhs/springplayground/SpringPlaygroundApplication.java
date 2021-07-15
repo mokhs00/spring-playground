@@ -7,6 +7,8 @@ import com.mokhs.springplayground.IoC.UrlEncoder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 public class SpringPlaygroundApplication {
@@ -34,13 +36,37 @@ public class SpringPlaygroundApplication {
 
         // interface type IoC
 
-        Encoder encoder = context.getBean(Encoder.class);
+//        Encoder encoder = context.getBean(Encoder.class);
+//
+//        String encoded = encoder.encode(message);
+//
+//        System.out.println(encoded);
 
-        String encoded = encoder.encode(message);
 
-        System.out.println(encoded);
+        // get same interface bean
+        // 매개변수 주의
+        Encoder encoder = context.getBean("urlEncode", Encoder.class);
+
+//        Encoder encoder = context.getBean("base64Encode", Encoder.class);
+
+        String encode = encoder.encode(message);
+        System.out.println(encode);
+    }
+
+}
 
 
+@Configuration
+class AppConfig {
+
+    @Bean("base64Encode")
+    public Encoder encoder(Base64Encoder base64Encoder) {
+        return new Encoder(base64Encoder);
+    }
+
+    @Bean("urlEncode")
+    public Encoder encoder(UrlEncoder urlEncoder) {
+        return new Encoder(urlEncoder);
     }
 
 }
