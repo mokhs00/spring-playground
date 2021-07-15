@@ -18,18 +18,29 @@ public class SpringPlaygroundApplication {
         String message = "mokhs kk";
 
         // class type IoC
-        Base64Encoder base64Encoder = context.getBean(Base64Encoder.class);
-        UrlEncoder urlEncoder = context.getBean(UrlEncoder.class);
 
-        Encoder encoder = new Encoder(base64Encoder);
+//        Base64Encoder base64Encoder = context.getBean(Base64Encoder.class);
+//        UrlEncoder urlEncoder = context.getBean(UrlEncoder.class);
+//
+//        Encoder encoder = new Encoder(base64Encoder);
+//
+//        String encoded = encoder.encode(message);
+//        System.out.println(encoded);
+//
+//        encoder.setiEncoder(urlEncoder);
+//
+//        encoded = encoder.encode(message);
+//        System.out.println(encoded);
+
+        // interface type IoC
+
+        Encoder encoder = context.getBean(Encoder.class);
 
         String encoded = encoder.encode(message);
+
         System.out.println(encoded);
 
-        encoder.setiEncoder(urlEncoder);
 
-        encoded = encoder.encode(message);
-        System.out.println(encoded);
     }
 
 }
