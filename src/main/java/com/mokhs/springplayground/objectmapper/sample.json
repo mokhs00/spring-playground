@@ -1,0 +1,16 @@
+{
+  "name": "mokhs",
+  "age": 22,
+  "cars": [
+    {
+      "name": "K5",
+      "carNumber": "12나 1234",
+      "type": ""
+    },
+    {
+      "name": "Q5",
+      "carNumber": "12나 1233",
+      "type": ""
+    }
+  ]
+}
