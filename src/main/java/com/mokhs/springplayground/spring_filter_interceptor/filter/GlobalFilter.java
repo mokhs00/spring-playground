@@ -36,7 +36,7 @@ public class GlobalFilter implements Filter {
         // 후처리
         String reqContent = new String(httpServletRequest.getContentAsByteArray());
 
-        log.info("requsetUrl : {}, requestBody : {}", url, reqContent);
+        log.info("requestUrl : {}, requestBody : {}", url, reqContent);
 
 
         String resContent = new String(httpServletResponse.getContentAsByteArray());
